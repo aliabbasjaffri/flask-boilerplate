@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve API
+After=network.target
+
+[Service]
+User=apiuser
+Group=apigroup
+WorkingDirectory=/opt/api/
+# Replace --bind with socket
+ExecStart=gunicorn --bind=0.0.0.0:5000 --threads=25 --workers=2 api:app
+
+[Install]
+WantedBy=multi-user.target
