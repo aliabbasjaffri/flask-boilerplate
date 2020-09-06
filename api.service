@@ -3,11 +3,11 @@ Description=Gunicorn instance to serve API
 After=network.target
 
 [Service]
-User=apiuser
-Group=apigroup
+User=www-data
+Group=www-data
 WorkingDirectory=/opt/api/
 # Replace --bind with socket
-ExecStart=gunicorn --bind=0.0.0.0:5000 --threads=25 --workers=2 api:app
+ExecStart=/usr/local/bin/gunicorn --bind unix:/opt/api/app.sock --threads=25 --workers=2 -m 007 api:app
 
 [Install]
 WantedBy=multi-user.target
