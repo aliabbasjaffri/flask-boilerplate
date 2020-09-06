@@ -1,6 +1,9 @@
 # Sample Flask Application Boilerplate
 
 ## Setting up Flask Application for Development Environment
+- The development environment is managed by Docker and docker-compose file
+- Update the variables in `docker-compose` file and run `docker-compose up`
+
 
 ## Setting up Flask Application for Production Environment
 - Launch a VM and checkout this repository in it.
@@ -41,7 +44,7 @@ systemctl status api.service
 - Execute the following steps:
 ```bash
 # To verify if the api value pasted is accurate
-cat /etc/nginx/sites-available/api 
+cat /etc/nginx/sites-available/api
 # creating a link from sited available to sites enabled
 ln -s /etc/nginx/sites-available/api /etc/nginx/sites-enabled
 # testing the service for the updated configuration
