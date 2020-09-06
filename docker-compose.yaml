@@ -21,10 +21,6 @@ services:
     app:
         build: .
         container_name: "api"
-        args:
-            # values can be `devl` for development environment
-            # or            `prod` for production  environment
-            ENV: "devl"
         environment: 
             <<: *common-database-variables
             DB_CONNECTION: mongodb
