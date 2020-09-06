@@ -4,9 +4,9 @@ from flask import Flask, Response, request, json, abort, render_template
 app = Flask(__name__)
 
 # default sanity tester
-# @app.route('/')
-# def hello():
-#   return 'Hello World!'
+@app.route('/hello')
+def hello():
+  return render_template('hello.html'), 200
 
 @app.route('/')
 def base():
@@ -84,4 +84,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    # Remove port=5000 and debug=True for running
+    # the application in production environment
+    # app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(host='0.0.0.0')
