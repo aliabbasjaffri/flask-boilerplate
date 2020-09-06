@@ -1,6 +1,8 @@
 # Sample Flask Application Boilerplate
 
-## Setting up VM
+## Setting up Flask Application for Development Environment
+
+## Setting up Flask Application for Production Environment
 - Launch a VM and checkout this repository in it.
 - `cd` into the project and run the following snippet
 ```bash
