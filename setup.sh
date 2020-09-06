@@ -7,7 +7,7 @@ python3 -m pip install -r requirements.txt
 cd ..
 cp -R flask-boilerplate /opt/api/
 rm -rf flask-boilerplate
-chown -R <USER-NAME>:<USER-NAME> /opt/api
+chown -R www-data:www-data /opt/api
 chmod -R g+w /opt/api
 mv /opt/api/api.service /etc/systemd/system/
 systemctl daemon-reload
