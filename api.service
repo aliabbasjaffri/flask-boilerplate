@@ -3,10 +3,11 @@ Description=Gunicorn instance to serve API
 After=network.target
 
 [Service]
+# The user and group are set as www-data because this is the user that can
+# access nginx service
 User=www-data
 Group=www-data
 WorkingDirectory=/opt/api/
-# Replace --bind with socket
 ExecStart=/usr/local/bin/gunicorn --bind unix:/opt/api/app.sock --threads=25 --workers=2 -m 007 api:app
 
 [Install]
