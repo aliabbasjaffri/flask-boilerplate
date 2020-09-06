@@ -1,0 +1,37 @@
+version: "3"
+
+# Docker-compose extension fields
+# https://docs.docker.com/compose/compose-file/#extension-fields
+x-common-variables: &common-database-variables
+    MONGO_INITDB_DATABASE: test
+    MONGO_INITDB_ROOT_USERNAME: root
+    MONGO_INITDB_ROOT_PASSWORD: rootpassword
+
+services:
+    database:
+        image: mongo:latest
+        container_name: "mongodb"
+        environment:
+            <<: *common-database-variables
+            
+        ports:
+            - 27017:27017
+        volumes:
+            - mongodb_data_container:/data/db
+    app:
+        build: .
+        container_name: "api"
+        args:
+            # values can be `devl` for development environment
+            # or            `prod` for production  environment
+            ENV: "devl"
+        environment: 
+            <<: *common-database-variables
+            DB_CONNECTION: mongodb
+        ports:
+            - 5000:5000
+        depends_on:
+            - database
+
+volumes:
+  mongodb_data_container:
