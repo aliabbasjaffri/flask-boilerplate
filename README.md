@@ -73,3 +73,13 @@ sudo ufw allow 'Nginx Full'
 ```bash
 netstat -lpn | grep app
 ```
+
+## Error Handling
+```bash
+# For the following error, check if the correct user has the ownership of the project folder in
+# /opt/api/ folder
+connect() to unix:/opt/api/app.sock failed (2: No such file or directory) while connecting to upstream
+
+# For the following error, check if the correct user has control over nginx to talk to the api
+connect() to unix:/opt/api/app.sock failed (*: Permission denied) while connecting to upstream
+```
