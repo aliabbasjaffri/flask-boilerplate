@@ -107,12 +107,10 @@ openssl x509 -req -in flask.server.csr -text -days 365 \
 cp flask.server.{key,crt} /etc/ssl/nginx/
 ```
 - The nginx conf file is already pointing to the generated certificate and key pair; `flask.server.{key,crt}`.
--- <TODO>: Validate --
 - To verify if the certificate is being served on secure port
 ```bash
 openssl s_client -connect <VM-IP>:80 -showcerts
 ```
--- <TODO>: Validate --
 ## Error Handling
 ```bash
 # For the following error, check if the correct user has the ownership of the project folder in
@@ -122,3 +120,7 @@ connect() to unix:/opt/api/app.sock failed (2: No such file or directory) while 
 # For the following error, check if the correct user has control over nginx to talk to the api
 connect() to unix:/opt/api/app.sock failed (*: Permission denied) while connecting to upstream
 ```
+## TODO
+- verify certificate serving on secure port
+- Add py linter such as flake8
+- Verify if all 12 factor app rules are being followed
