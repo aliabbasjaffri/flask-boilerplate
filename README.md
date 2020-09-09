@@ -7,11 +7,6 @@
 
 ## Setting up Flask Application for Production Environment
 - Launch a VM and checkout this repository in it.
-- `cd` into the project and run the following snippet
-```bash
-chmod +x setup.sh
-./setup.sh
-```
 - Copy the project file to the appropriate directory
 ```bash
 cp -R flask-boilerplate/ /opt/api
@@ -111,6 +106,14 @@ cp flask.server.{key,crt} /etc/ssl/nginx/
 ```bash
 openssl s_client -connect <VM-IP>:80 -showcerts
 ```
+
+## Alternative faster way..
+- `cd` into the project and run the following snippet
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
 ## Error Handling
 ```bash
 # For the following error, check if the correct user has the ownership of the project folder in
