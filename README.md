@@ -7,10 +7,9 @@
 
 ## Setting up Flask Application for Production Environment
 - Launch a VM and checkout this repository in it.
-- Copy the project file to the appropriate directory
+- Move the project file to the appropriate directory
 ```bash
-cp -R flask-boilerplate/ /opt/api
-rm -rf flask-boilerplate
+mv flask-boilerplate/ /opt/api
 ```
 - Move the daemon service to the `systemd` path
 ```bash
@@ -100,7 +99,7 @@ openssl x509 -req -in flask.server.csr -text -days 365 \
   -out flask.server.crt
 
 # Copying flask.server.* certificate key pair to nginx certificate store
-cp flask.server.{key,crt} /etc/ssl/nginx/
+cp flask.server.{key,crt} /etc/ssl/
 ```
 - The nginx conf file is already pointing to the generated certificate and key pair; `flask.server.{key,crt}`.
 - To verify if the certificate is being served on secure port
@@ -124,7 +123,3 @@ connect() to unix:/opt/api/app.sock failed (2: No such file or directory) while 
 # For the following error, check if the correct user has control over nginx to talk to the api
 connect() to unix:/opt/api/app.sock failed (*: Permission denied) while connecting to upstream
 ```
-## TODO
-- verify certificate serving on secure port
-- Add py linter such as flake8
-- Verify if all 12 factor app rules are being followed
