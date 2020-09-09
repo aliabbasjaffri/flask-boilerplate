@@ -38,14 +38,15 @@ systemctl status api.service
 - Next, setup nginx service to talk to gunicorn. Copy the contexts of `nginx.conf` in the folder to `/etc/nginx/sites-available/api` and replace the `<IP-ADDRESS>` with your server's IP address or your domain
 - Execute the following steps:
 ```bash
-# To verify if the api value pasted is accurate
+# To verify if everything is okay
 cat /etc/nginx/sites-available/api
+
 # creating a link from sited available to sites enabled
 ln -s /etc/nginx/sites-available/api /etc/nginx/sites-enabled
+
 # testing the service for the updated configuration
 nginx -t
-systemctl restart nginx
-systemctl status nginx
+systemctl restart nginx && systemctl status nginx
 ```
 - In case there is any error you can try either of the following commands to check where the issue exists
 ```bash
