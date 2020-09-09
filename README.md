@@ -12,9 +12,9 @@
 cp -R flask-boilerplate/ /opt/api
 rm -rf flask-boilerplate
 ```
-- Copy the daemon service to the `systemd` path
+- Move the daemon service to the `systemd` path
 ```bash
-cp /opt/api/api.service /etc/systemd/system/
+mv /opt/api/api.service /etc/systemd/system/
 ```
 - You can use the already created user `www-data` in the system. Alternatively you can create a new user as well.
 - The advantage of user `www-data` is that you don't have to replace your user in `/etc/nginx/nginx.conf` file
