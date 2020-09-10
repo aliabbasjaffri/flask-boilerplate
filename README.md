@@ -116,6 +116,27 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
+## API Testing
+- `GET` Request:
+  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>' -H 'accept: application/json'`
+- `POST` Request:
+  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>' -H 'content-type: application/json' \
+          -H 'accept: application/json, text/plain, */*'                      \
+          --data-binary                                                       \
+          '{ "name": "user_abc",
+              "details": [{ "location" : "selection", "number" : "+12345",
+                            "description" : "Creating this api" }]
+            }'`
+- `PUT` Request:
+  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>/<:id>' -X PUT          \
+          -H 'content-type: application/json' -H 'accept: application/js, */*'\
+          --data-binary '{ "name" : "new user name"}'`
+- `DELETE` Request:
+  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>/<:id>' -X DELETE        \
+          -H 'content-type: application/json' -H 'accept: application/json'`
+
+
+
 ## Error Handling
 ```bash
 # For the following error, check if the correct user has the ownership of the project folder in
