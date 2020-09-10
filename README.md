@@ -71,6 +71,7 @@ netstat -lpn | grep app
 
 ### Setup NGINX with SSL and HTTP/2
 - Generate self-signed certificates using OpenSSL. Create a Certification Authourity root certificate and generate server certificate from that CA.
+- This example is with self-signed root CA authrourity. If you have a root CA for your domain, skip the step for its generation and jump directly to generating `Flask Server CSR` and following steps.
 ```bash
 # Generating root certificate `certificate signing request` to be used as Certification Authourity
 openssl req -new -nodes -text -out flask.root.csr \
@@ -104,11 +105,12 @@ cp flask.server.{key,crt} /etc/ssl/
 - The nginx conf file is already pointing to the generated certificate and key pair; `flask.server.{key,crt}`.
 - To verify if the certificate is being served on secure port
 ```bash
-openssl s_client -connect <VM-IP>:80 -showcerts
+openssl s_client -connect <VM-IP>:443 -showcerts
 ```
 
 ## Alternative faster way..
 - `cd` into the project and run the following snippet
+- *WARNING* You still need to install `git` on the VM to clone this repo on a VM and manually edit the files for routes and nginx file for server path.
 ```bash
 chmod +x setup.sh
 ./setup.sh
