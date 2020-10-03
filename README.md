@@ -149,3 +149,4 @@ connect() to unix:/opt/api/app.sock failed (*: Permission denied) while connecti
 
 ## TODO
 - Setup *nix based keepalivd
+- Setup `monitoring` for gunicorn
