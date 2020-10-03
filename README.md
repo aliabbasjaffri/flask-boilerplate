@@ -123,13 +123,13 @@ curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>' -H 'accept: application/json'
 ```
 - `POST` Request:
 ```
-curl  -X POST 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>'                                     \
-      -H 'content-type: application/json'                                                       \
-      -H 'accept: application/json' --data-binary                                               \
-      '{                                                                                        \
-        "username": "string",                                                                   \
-        "email": "user@example.com",                                                            \
-        "full_name": "string"                                                                   \
+curl  -X POST 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>'               \
+      -H 'content-type: application/json'                                 \
+      -H 'accept: application/json' --data-binary                         \
+      '{                                                                  \
+        "username": "string",                                             \
+        "email": "user@example.com",                                      \
+        "full_name": "string"                                             \
       }'
 ```
 - `PUT` Request:
