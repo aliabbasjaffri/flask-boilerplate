@@ -58,7 +58,7 @@ def update(id):
     elif id < 0:
         return Response(
             response=json.dumps({
-                'Error': 'Please provide correct tab id'}),
+                'Error': 'Please provide correct item id'}),
             status=400,
             mimetype='application/json')
 
