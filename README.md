@@ -118,22 +118,33 @@ chmod +x setup.sh
 
 ## API Testing
 - `GET` Request:
-  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>' -H 'accept: application/json'`
+```
+curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>' -H 'accept: application/json'
+```
 - `POST` Request:
-  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>' -H 'content-type: application/json' \
-          -H 'accept: application/json, text/plain, */*'                      \
-          --data-binary                                                       \
-          '{ "name": "user_abc",
-              "details": [{ "location" : "selection", "number" : "+12345",
-                            "description" : "Creating this api" }]
-            }'`
+```
+curl  -X POST 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>'                                     \
+      -H 'content-type: application/json'                                                       \
+      -H 'accept: application/json' --data-binary                                               \
+      '{                                                                                        \
+        "username": "string",                                                                   \
+        "email": "user@example.com",                                                            \
+        "full_name": "string"                                                                   \
+      }'
+```
 - `PUT` Request:
-  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>/<:id>' -X PUT          \
-          -H 'content-type: application/json' -H 'accept: application/js, */*'\
-          --data-binary '{ "name" : "new user name"}'`
+```
+curl  -X PUT 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>/<:id>'          \
+      -H 'content-type: application/json'                                 \
+      -H 'accept: application/json'                                       \
+      --data-binary '{ "username" : "new user name"}'
+```
 - `DELETE` Request:
-  - `curl 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>/<:id>' -X DELETE        \
-          -H 'content-type: application/json' -H 'accept: application/json'`
+```
+curl  -X DELETE 'https://<IP-ADDRESS-OR-DOMAIN-NAME>/<route>/<:id>'       \
+      -H 'content-type: application/json'                                 \
+      -H 'accept: application/json'
+```
 
 
 
