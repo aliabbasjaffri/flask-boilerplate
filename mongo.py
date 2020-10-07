@@ -44,12 +44,14 @@ class MongoAPI:
 
     def update(self, data, id):
         response = self.collection.update_one({'_id': id}, {'$set': data})
-        return {
-            'Status': 'Item updated successfully' if response.modified_count > 0 else 'Item update unsuccessful'
-        }
+        if response.modified_count > 0:
+            return {'Status': 'Item updated successfully'}
+        else:
+            return {'Status': 'Item update unsuccessful'}
 
     def delete(self, id):
         response = self.collection.delete_one({'_id': id})
-        return {
-            'Status': 'Item deleted successfully' if response.deleted_count > 0 else 'Item not found.'
-        }
+        if response.deleted_count > 0:
+            return {'Status': 'Item deleted successfully'}
+        else:
+            return {'Status': 'Item not found.'}
