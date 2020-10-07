@@ -12,6 +12,7 @@ mongo_username = os.environ.get('MONGODB_USER')
 mongo_password = os.environ.get('MONGODB_PASS')
 mongo_database = os.environ.get('MONGO_DB_NAME')
 
+
 class MongoAPI:
     def __init__(self):
         self.client = MongoClient(
@@ -30,7 +31,7 @@ class MongoAPI:
             'Status': 'Item Created Successfully',
             '_id': str(response.inserted_id)
             }
-    
+
     def read_all_items(self):
         items = self.collection.find()
         output = {}
@@ -45,8 +46,10 @@ class MongoAPI:
         response = self.collection.update_one({'_id': id}, {'$set': data})
         return {
             'Status': 'Item updated successfully' if response.modified_count > 0 else 'Item update unsuccessful'
-            }
-    
+        }
+
     def delete(self, id):
         response = self.collection.delete_one({'_id': id})
-        return {'Status': 'Item deleted successfully' if response.deleted_count > 0 else 'Item not found.'}
+        return {
+            'Status': 'Item deleted successfully' if response.deleted_count > 0 else 'Item not found.'
+        }
