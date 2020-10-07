@@ -8,7 +8,7 @@ After=network.target
 User=www-data
 Group=www-data
 WorkingDirectory=/opt/api/
-ExecStart=/usr/local/bin/gunicorn --bind unix:/opt/api/app.sock --threads=25 --workers=2 -m 007 api:app
+ExecStart=/usr/local/bin/gunicorn -c /opt/api/gunicorn.conf.py api:app
 
 [Install]
 WantedBy=multi-user.target
